@@ -37,19 +37,12 @@ public class Obstacles {
                 new Point(startX, height),
                 new Point(startX + thickness, height)));
         for (int i = 1; i <= 9; i++) {
-            difference =/*(int)(Math.random()*k+1)*/k;
+            difference =k;
             var r0 = obstacles_list.getLast();
             var edge2 = r0.edge2();
             depth = height / getStupidConstant(3) + (int) (Math.random() * height / 4 + 1);
-            obstacles_list.add(new Block(new Point(edge2.x + thickness + difference, 0)
-                    , new Point(edge2.x + 2 * thickness + difference, 0),
-                    new Point(edge2.x + thickness + difference, depth),
-                    new Point(edge2.x + 2 * thickness + difference, depth)));
-            depth = depth + getStupidConstant(12);
-            obstacles_list.add(new Block(new Point(edge2.x + thickness + difference, depth)
-                    , new Point(edge2.x + thickness * 2 + difference, depth),
-                    new Point(edge2.x + thickness + difference, height),
-                    new Point(edge2.x + thickness * 2 + difference, height)));
+            IO.println(depth);
+            haveFun(edge2, depth, height);
 
         }
     }
@@ -59,7 +52,11 @@ public class Obstacles {
         var edge2 = r0.edge2();
         int depth;
         depth = height / getStupidConstant(3) + (int) (Math.random() * height / 4 + 1);
-        difference =/*(int)(Math.random()*k+1)*/k;
+        difference =k;
+        haveFun(edge2, depth, height);
+    }
+
+    private void haveFun(Point edge2, int depth, int height) {
         obstacles_list.add(new Block(new Point(edge2.x + thickness + difference, 0)
                 , new Point(edge2.x + 2 * thickness + difference, 0),
                 new Point(edge2.x + thickness + difference, depth),

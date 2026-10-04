@@ -1,4 +1,5 @@
 org\flappy_bird\game\BirdParts.class
+org\flappy_bird\game\Tuple.class
 org\flappy_bird\game\Display.class
 org\flappy_bird\game\IsPart.class
 org\flappy_bird\game\AnimateAsciiImage.class
@@ -9,6 +10,5 @@ org\flappy_bird\game\Main.class
 org\flappy_bird\game\Obstacles.class
 org\flappy_bird\game\Game.class
 org\flappy_bird\game\Game$1.class
-org\flappy_bird\game\Game$Tuple.class
 org\flappy_bird\game\KeyBoardInput.class
 org\flappy_bird\game\Point.class

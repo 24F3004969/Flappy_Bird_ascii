@@ -8,13 +8,7 @@ import java.util.HashSet;
 
 
 public class Game {
-    String TITLE = """
-                
-                
-                
-                
-                
-                
+    String TITLE = """   
                 ____  ______ _                           ____  _         _  ____  \s
                / / / |  ____| |                         |  _ \\(_)       | | \\ \\ \\ \s
               / / /  | |__  | | __ _ _ __  _ __  _   _  | |_) |_ _ __ __| |  \\ \\ \\\s
@@ -22,10 +16,7 @@ public class Game {
               \\ \\ \\  | |    | | (_| | |_) | |_) | |_| | | |_) | | | | (_| |  / / /\s
                \\_\\_\\ |_|    |_|\\__,_| .__/| .__/ \\__, | |____/|_|_|  \\__,_| /_/_/ \s
                                     | |   | |     __/ |                           \s
-                                    |_|   |_|    |___/                            \s
-                                    
-                                    
-                                    
+                                    |_|   |_|    |___/                            \s           
             """;
     private final int width;
     private final int height;
@@ -61,7 +52,7 @@ public class Game {
         this.height = height;
     }
 
-    public Tuple _getEntity(String name) {
+    public Tuple getEntity(String name) {
         var list = name.split("\n");
         StringBuilder builder = new StringBuilder();
         var textList = new ArrayList<BirdParts>();
@@ -71,13 +62,16 @@ public class Game {
                 int i1 = width / 3 +
                         (points.length() - 1 - i);
                 if (points.charAt(i) == '/') {
-                    textList.add(new BirdParts("" + '\\', new Point(i1, height / 2 + j)));
+                    textList.add(new BirdParts("" + '\\',
+                            new Point(i1, height / 2 + j)));
                     builder.append("" + '\\');
                 } else if (points.charAt(i) == '\\') {
-                    textList.add(new BirdParts("" + '/', new Point(i1, height / 2 + j)));
+                    textList.add(new BirdParts("" + '/',
+                            new Point(i1, height / 2 + j)));
                     builder.append("" + '/');
                 } else {
-                    textList.add(new BirdParts("" + points.charAt(i), new Point(i1, height / 2 + j)));
+                    textList.add(new BirdParts("" + points.charAt(i),
+                            new Point(i1, height / 2 + j)));
                     builder.append(points.charAt(i));
                 }
                 MAX_LENGTH = Math.max(MAX_LENGTH, points.length() - 1);
@@ -96,8 +90,8 @@ public class Game {
         keyBoardInput = new KeyBoardInput(display);
         obstacles = new Obstacles(width, height);
         ob = obstacles.getObstacles_list();
-        var _e1 = _getEntity(b1);
-        var _e2 = _getEntity(b2);
+        var _e1 = getEntity(b1);
+        var _e2 = getEntity(b2);
         ani = new AnimateAsciiImage(_e1.s(), _e2.s());
         ani.animate();
         bird = _e1.list().toArray(new BirdParts[]{});
@@ -108,9 +102,7 @@ public class Game {
             _game_frame = getStringBuilder(_game_frame, condition);
             Thread.sleep(70);
             animate_bird();
-            //display.terminal.puts(InfoCmp.Capability.clear_screen);
             System.out.print("\u001b[H");
-            //cls();
         }
         ani.stopAnimation();
         System.exit(-1);
@@ -157,7 +149,7 @@ public class Game {
         if (keyBoardInput.getKeyBoardKey() == Key.SPACE) {
             memory = new HashSet<>();
             condition = false;
-            bird = _getEntity(b1).list().toArray(new BirdParts[]{});
+            bird = getEntity(b1).list().toArray(new BirdParts[]{});
             ani.animate();
             score = 0;
             s = new StringBuilder();
@@ -266,10 +258,6 @@ public class Game {
         }
 
         return false;
-    }
-
-    private record Tuple(String s, ArrayList<BirdParts> list) {
-
     }
 
     private void loading(StringBuilder s) throws InterruptedException {
